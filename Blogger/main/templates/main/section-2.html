@@ -1,0 +1,87 @@
+{% load static %}
+<section id="section-2.1">
+    <p>
+        <strong>ASP.NET Core:</strong>
+        Open terminal (Ctrl+Alt+T) last time I hint you :), go in folder where the project will live then type `
+        <i>dotnet new web -n &lt;Name Of Your Project&gt;</i>` without angle brackets (In my case project is called Algodemy),
+        when installation finishes open project folder with your prefer editor in my case is vscode.
+    </p>
+    <p>This should be project structure you see:</p>
+
+    <img src="{% static 'img/installing-projects1.jpg' %}" class="img-thumbnail tutorial-img">
+
+    <p>
+        Use old terminal that is from project parent folder and type `
+        <i>cd &lt;Name Of Your Project &gt;</i>` then another command `
+        <i>dotnet run</i>` to test whether application can run properly.
+    </p>
+    <p>
+        If everything passed dotnet will up local server and wil listen in port 5000
+    </p>
+
+    <img src="{% static 'img/installing-projects2.jpg' %}" class="img-thumbnail tutorial-img">
+
+    <p>
+        navigate to
+        <a href="http://localhost:5000">localhost:5000</a> and you should see this Hello World! message with no errors in dev-tools console.
+    </p>
+
+    <img src="{% static 'img/installing-projects3.jpg' %}" class="img-thumbnail tutorial-img">
+
+    <p>Ok now let’s leave .Net Core for little rest and focus on client side.</p>
+</section>
+
+<br>
+
+<section id="section-2.2">
+    <p>
+        <strong>Angular:</strong>
+        Open terminal and navigate to .NET Core project directory or use last opened terminal then type `
+        <i>ng new ClientApp --minimal –dry-run</i>`. We use `
+        <i>--mininal</i>` flag to generate all support tools but project itself to be minimal as possible. This `
+        <i>--dry-run</i>` flag is showing what you should expect to create when command is executed without him this is convenient
+        for sanity check.
+    </p>
+    <img src="{% static 'img/installing-projects4.jpg' %}" class="img-thumbnail tutorial-img">
+    <p>
+        When see this minimal template it's ready to install but if you see more files or directories or other stuff you should probably
+        check that `
+        <i>--minimal</i>` flag is not misspeled. If everything is correct then type again command without `
+        <i>--dry-run</i>` flag `
+        <i>ng new &lt;Name Of Client App&gt; --mininal</i>`, you should wait until npm install Angular and his dependencies.
+        When all is done client app should has this project structure.
+    </p>
+    <img src="{% static 'img/installing-projects5.jpg' %}" class="img-thumbnail tutorial-img">
+    <p>
+        Looks more complicated than it is, but we will fix that a bit later.
+    </p>
+    <p>
+        Switch in console that is in project path and type `
+        <i>cd &lt;Name Of Client App&gt;</i>` and let’s use another command `
+        <i>ng-build</i>` thath gets all Typescript files you produce along with angular code and use Webpack to bundle all chunks
+        that you see below.
+    </p>
+    <img src="{% static 'img/installing-projects6.jpg' %}" class="img-thumbnail tutorial-img">
+    <p>
+        This bundles is ready for injecting in application, we need all of them. If you curious, your code is in main.bundle.js and
+        all other Is rest of your app (styles, angular code, etc.). All bundles has location "(Name Of Client App)/dist"
+    </p>
+    <p>
+        Again just for sanity check let's test our client app without messing it up with server code.
+        <br> Switch good old terminal that is already in path and serve client app as execute `
+        <i>ng serve</i>` then you see
+    </p>
+    <img src="{% static 'img/installing-projects7.jpg' %}" class="img-thumbnail tutorial-img">
+    <p>
+        our client app runs alone on localhost in port 4200. Locate your browser on
+        <a href="localhost:4200">localhost:4200</a> and if you follow along you should see that everything runs without errors and all bundles is
+        spit in browser properly.
+    </p>
+    <p>
+        <strong style="color:red">Bundles</strong>
+    </p>
+    <img src="{% static 'img/installing-projects8.jpg' %}" class="img-thumbnail tutorial-img">
+    <p>
+        <strong style="color:red">No errors</strong>
+    </p>
+</section>

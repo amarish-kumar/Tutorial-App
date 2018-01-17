@@ -1,0 +1,30 @@
+{% extends "main/header.html" %} {% load static %} {% block content %}
+
+<div id="tutorial-body" class="section-0">
+    {% include 'main/section-0.html' %}
+
+    <div id="section-1">
+        <h2>Prerequisites</h2>
+        <hr>
+        {% include 'main/section-1.html' %}
+    </div>
+    
+    <div id="section-2">
+        <h2>Installing Projects</h2>
+        <hr>
+        {% include 'main/section-2.html' %}
+    </div>
+    
+    <div id="section-3">
+        <h2>Integrating Angular and ASP.NET Core Living and Work Together</h2>
+        <hr>
+        {% include 'main/section-3.html' %}
+    </div>
+    
+    <div id="section-4" class=".anchor">
+        <h2>MVC Integration</h2>
+        <hr>
+        {% include 'main/section-4.html' %}
+    </div>
+</div>
+{% endblock %}

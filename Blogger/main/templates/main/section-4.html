@@ -1,0 +1,216 @@
+{% load static %}
+<section id="section-4.1">
+    <p>
+        <strong>Few Thoughts Before Starting:</strong>
+        If this tutorial was built before .NET Core release I had to create separate folder structure for Views and Controllers then
+        i had to wire up all stuff with naming conventions or supplying additional setup information in "Startup" for all
+        parts work properly, but I will use new .NET Core feature called "Razor Pages". This feature is convenient for simple
+        applications, testing purposes, teaching or just temporarly convenience before deciding what structure or design
+        should be implemented. In this final setion of this tutorial i will test whole application with “Razor Pages” just
+        for simplicity, but all that we produce is very easy switchable or direct build with standart old MVC Architecture
+        that .NET uses from years.
+    </p>
+</section>
+
+<br>
+
+<section id="section-4.2">
+    <p>
+        <strong>Building MVC with Razor Pages:</strong>
+        Lets start by creating "Pages" folder in our project (.NET Project) folder, open terminal and navigate to project path, type
+        `
+        <i>mkdir Pages</i>`(this command will create folder named "Pages" if you on windows or linux) after thath copy next
+        lines and paste on console if you in same OS like me or just create by hand same files with same structure in appropriate
+        folder("Pages").
+        <section>
+            <p>
+                `
+                <i>cd Pages</i>`&Tab;&lArr;&Tab;change current directory to Pages
+                <br> `
+                <i>>> _Layout.cshtml</i>`&Tab;&lArr;&Tab;create file(layout for our app) in current directory
+                <br> `
+                <i>>> _ViewStart.cshtml</i>`&Tab;&lArr;&Tab;this determines which page is ours layout
+                <br> `
+                <i>>> Index.cshtml</i>`&Tab;&lArr;&Tab;page that we will use for injecting bundles and serve from controller
+                on screen
+                <br> `
+                <i>>> Index.cshtml.cs</i>`&Tab;&lArr;&Tab;and this is just code behind file that Razor needs for our test page
+                <br>
+            </p>
+        </section>
+    </p>
+
+    <p>Pages structure you should have.</p>
+
+    <img src="{% static 'img/MVC-Integration1.jpg' %}" class="img-thumbnail tutorial-img">
+
+    <p>Let's fill these empty files with code and create little alert script that indicate whether our Razor views is rendered
+        as we like.</p>
+    <p>
+        Open "_Layout.cshtml" page and paste this code snippet.
+    </p>
+
+    <code><pre>
+        &lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+            &lt;head&gt;
+                &lt;meta charset=&quot;utf-8&quot; /&gt;
+                &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+                &lt;title&gt;@ViewData[&quot;Title&quot;] - Algodemy&lt;/title&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+                &lt;div class=&quot;container body-content&quot;&gt;
+                    @RenderBody()
+                    &lt;hr /&gt;
+                    &lt;footer&gt;
+                        &lt;p&gt;&amp;copy; 2018 - Algodemy&lt;/p&gt;
+                    &lt;/footer&gt;
+                &lt;/div&gt;
+                @RenderSection(&quot;Scripts&quot;, required: false)
+            &lt;/body&gt;
+        &lt;/html&gt;     
+    </pre></code>
+
+    <p>
+        This snippet had two important lines, first is "@RenderBody()" from there this layout knows where to replace partial views(in
+        our case "Index.cshtml") and second is "RenderSection('Scripts', required: false)" that section inject all scripts
+        thath partial view use below whole layout because Javascript must be loaded after html itself.
+    </p>
+    <p>
+        Next open "_ViewStart.cshtml" and paste.
+    </p>
+
+    <code><pre>
+        @{
+            Layout = "_Layout";
+        }
+    </pre></code>
+
+    <p>This just saying use "_Layout" as our main layout.</p>
+    <p>After that open "Index.cshtml" and insert this code.</p>
+
+    <code><pre>
+        @page
+        @model IndexModel
+        @namespace Algodemy.Pages
+        
+        @section Scripts {
+            &lt;script src=&quot;~/js/my.js&quot;&gt;&lt;/script&gt;
+        }
+        &lt;h1&gt;Hello Elvis index view works!&lt;/h1&gt;
+    </pre></code>
+
+    <p>
+        That says this is razor page, which use this model, import Pages namespace and use this script("my.js") which has not yet
+        been created.
+    </p>
+    <p>Next go to "Index.cshtml.cs" file and paste this</p>
+
+    <code><pre>
+        using Microsoft.AspNetCore.Mvc.RazorPages;
+        
+        namespace Algodemy.Pages
+        {
+            public class IndexModel : PageModel
+            {
+                public void OnGet() { }
+            }
+        }
+    </pre></code>
+
+    <p>This no need to be explained in our case because I use only for Razor to work, but there is an application if you use
+        Razor in project. But if you curious don't worry, I will link all resources below this tutorial which is used for
+        creating it along with Razor documentation.</p>
+    <p>
+        Our logic leads us to create last testing piece that is "my.js" script which showing popup window with greet message to indicate
+        everything is wired and works.
+    </p>
+    <p>
+        Go to "wwwroot" create "js" folder and "my.js" script in it. In this script should be paste this alert function that is provided
+        by window object.
+    </p>
+    <p>This is ".js" file and content.</p>
+
+    <img src="{% static 'img/MVC-Integration2.jpg' %}" class="img-thumbnail tutorial-img">
+
+    <p>When we are done with this is ready to run server and test everything so far.</p>
+    <p>
+        Open terminal from sever project folder and type `
+        <i>dotnet run</i>` when .NET start listening go to url in port in my case is 5000
+        <a href="http://localhost:5000/">localhost:5000</a> and we see our content, alert window with message, "my.js" file is on browser and console is clear.
+    </p>
+
+    <img src="{% static 'img/MVC-Integration3.jpg' %}" class="img-thumbnail tutorial-img">
+
+    <p>
+        When this is done just go to "wwwroot" and delete whole "js" folder that we don't need already.
+    </p>
+    <p>
+        Let's inject all the bundles angular-cli has done for us with Webpack. And when injecting these bundles the order in which
+        we include files matters, that's why copy this snippet or include scripts in same order if you don't follow exact.
+    </p>
+    <p>
+        Open "Index.cshtml" and replace scripts section and everything below with this.
+    </p>
+
+    <code><pre>
+        @section Scripts {
+            &lt;script src=&quot;~/ClientApp/dist/inline.bundle.js&quot;&gt;&lt;/script&gt;
+            &lt;script src=&quot;~/ClientApp/dist/polyfills.bundle.js&quot;&gt;&lt;/script&gt;
+            &lt;script src=&quot;~/ClientApp/dist/styles.bundle.js&quot;&gt;&lt;/script&gt;
+            &lt;script src=&quot;~/ClientApp/dist/vendor.bundle.js&quot;&gt;&lt;/script&gt;
+            &lt;script src=&quot;~/ClientApp/dist/main.bundle.js&quot;&gt;&lt;/script&gt;
+        }
+        &lt;app-root&gt;&lt;/app-root&gt;
+    </pre></code>
+
+    <p>
+        The result should be.
+    </p>
+
+    <img src="{% static 'img/MVC-Integration4.jpg' %}" class="img-thumbnail tutorial-img">
+
+    <p>
+        These scripts all will be injected below layout footer and "&lt;app-root&gt;&lt;/app-root&gt;" selector is our Angular app
+        component template.
+    </p>
+    <p>
+        If you don't close last used terminal our server still listen for requests but if you not run again `
+        <i>dotnet run</i>` command and navigate to localhost on your used port im my case
+        <a href="http://localhost:5000/">localhost:5000</a> and after that you should see Angular is served properly on your browser.
+    </p>
+    <p style="text-align:center">
+        <strong style="color:red;">Angular Template and Bundled files</strong>
+    </p>
+
+    <img src="{% static 'img/MVC-Integration5.jpg' %}" class="img-thumbnail tutorial-img">
+
+    <p>
+        <strong style="color:red">No errors on console</strong>
+    </p>
+    <p>
+        If you do not believe this works open "ClientApp/app/app.component.ts" file then open "Pages/Index.cshtml" and add these
+        changes to see effect.
+    </p>
+    <p>
+        First change selector on app.component from "app-root" to "app-root-component" then replace all inline Angular template and
+        paste yours in my case is "Heey this {{title}} really works." All changes are selected to see exactly what you should
+        do.
+    </p>
+
+    <img src="{% static 'img/MVC-Integration6.jpg' %}" class="img-thumbnail tutorial-img">
+
+    <p>
+        From there open new terminal (I will use again vscode terminal) type `
+        <i>ng build</i>` in core project path to rebundle all changes. As we see on above screen we are done after 6 seconds
+        and if you did not turn off the server just make request to home apge and see result.
+    </p>
+
+    <img src="{% static 'img/MVC-Integration7.jpg' %}" class="img-thumbnail tutorial-img">
+
+    <p>
+        And we are done, believe or not this is all integration that we need to start building our web application. This is for now
+        and if you have any concerns, questions, opinions or just to correct me leave comment below or send me email on dreemsuncho@gmail.com
+    </p>
+    <p>Regards and chao for now :)</p>
+</section>
