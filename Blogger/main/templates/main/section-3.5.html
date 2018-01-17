@@ -1,0 +1,31 @@
+
+<!--  -->
+<!-- BUILDING ALL TOGETHER -->
+<!--  -->
+
+<p>
+    Open terminal in .NET Project folder(not client app) and type `
+    <i>npm install</i>` this command should install all Angular dependencies.
+</p>
+<p>
+    Here in "node_modules" folder all angular dependencies and npm packages live
+</p>
+<img src="{% static 'img/Integrating Angular and ASP.NET Core14.jpg' %}" class="img-thumbnail tutorial-img">
+<p>
+    Switch on last console and type `
+    <i>ng build</i>` little bit later in “wwwroot” folder appear new one with name “ClientApp” just as we configuring CLI before,
+    there is all compiled Typescript in form of JavaScript files that we need for our purpose along with source maps which
+    is used for debugging but in this tutorial is not relevant.
+</p>
+<p>
+    Our "wwwroot" folder after `
+    <i>ng build</i>` command with all Javascript
+</p>
+<img src="{% static 'img/Integrating Angular and ASP.NET Core15.jpg' %}" class="img-thumbnail tutorial-img">
+<p>
+    All chunks as we see are the same as in root folder.
+</p>
+<p>
+    Right now we have all the parts in place, remains to test whether everything works smoothly but before that we must do a
+    little more work such as creating a controller to manage the coming requests and return apropriate Razor page.
+</p>

@@ -1,0 +1,39 @@
+
+
+
+<!--  -->
+<!-- REARRANGING ANGULAR APPLICATION -->
+<!--  -->
+
+
+<p>
+    Open client app project folder
+</p>
+<img src="{% static 'img/Integrating Angular and ASP.NET Core1.jpg' %}" class="img-thumbnail tutorial-img">
+<p>
+    select "dist" ,"node_modules" folders as well ".gitignore" file and delete all selected items.
+</p>
+<img src="{% static 'img/Integrating Angular and ASP.NET Core2.jpg' %}" class="img-thumbnail tutorial-img">
+<p>
+    Next cut the "package.json", "tsconfig.json" and ".angular-cli.json"
+</p>
+<img src="{% static 'img/Integrating Angular and ASP.NET Core3.jpg' %}" class="img-thumbnail tutorial-img">
+<p>
+    go back up one folder (.NET Core project folder) and paste files
+</p>
+<img src="{% static 'img/Integrating Angular and ASP.NET Core4.jpg' %}" class="img-thumbnail tutorial-img">
+<p>
+    then go back to Angular app (ClientApp) folder and cut all files from "src" folder
+</p>
+<img src="{% static 'img/Integrating Angular and ASP.NET Core5.jpg' %}" class="img-thumbnail tutorial-img">
+<p>
+    and paste it on ClientApp itself
+</p>
+<img src="{% static 'img/Integrating Angular and ASP.NET Core6.jpg' %}" class="img-thumbnail tutorial-img">
+<p>then just delete "src" folder</p>
+<img src="{% static 'img/Integrating Angular and ASP.NET Core7.jpg' %}" class="img-thumbnail tutorial-img">
+<p>and we are done with scalping "ClientApp" structure.</p>
+<p>
+    Ok let’s introduce root folder for our whole app and from there we will serve access to static files, bundles and everything
+    that our client will need to run properly.
+</p>

@@ -1,167 +1,43 @@
-{% load static %}
+<!--  -->
+<!-- INTEGRATING ANGULAR AND ASP.NET CORE LIVE AND WORK TOGETHER -->
+<!--  -->
+
+
+<!-- REARRANGING ANGULAR APPLICATION -->
+
 <section id="section-3.1">
-    <p>
-        <strong>Rearranging Angular Application:</strong>
-        Open client app project folder
-    </p>
-    <img src="{% static 'img/Integrating Angular and ASP.NET Core1.jpg' %}" class="img-thumbnail tutorial-img">
-    <p>
-        select "dist" ,"node_modules" folders and ".gitignore" file and delete all selected items.
-    </p>
-    <img src="{% static 'img/Integrating Angular and ASP.NET Core2.jpg' %}" class="img-thumbnail tutorial-img">
-    <p>
-        Next cut the "package.json", "tsconfig.json" and ".angular-cli.json"
-    </p>
-    <img src="{% static 'img/Integrating Angular and ASP.NET Core3.jpg' %}" class="img-thumbnail tutorial-img">
-    <p>
-        go back up one folder (.NET Core project folder) and paste files
-    </p>
-    <img src="{% static 'img/Integrating Angular and ASP.NET Core4.jpg' %}" class="img-thumbnail tutorial-img">
-    <p>
-        then go back to Angular app (ClientApp) folder and cut all files from "src" folder
-    </p>
-    <img src="{% static 'img/Integrating Angular and ASP.NET Core5.jpg' %}" class="img-thumbnail tutorial-img">
-    <p>
-        and paste it on ClientApp itself
-    </p>
-    <img src="{% static 'img/Integrating Angular and ASP.NET Core6.jpg' %}" class="img-thumbnail tutorial-img">
-    <p>then just delete "src" folder</p>
-    <img src="{% static 'img/Integrating Angular and ASP.NET Core7.jpg' %}" class="img-thumbnail tutorial-img">
-    <p>and we are done with scalping "ClientApp" structure.</p>
-    <p>
-        Ok let’s introduce root folder for our whole project and from there we will serve through pipeline access to static files,
-        bundles and everything that our client will need run appropriately.
-    </p>
+    <strong>&emsp;- Rearranging Angular Application:</strong>
+    <hr> {% include 'main/section-3.1.html' %}
 </section>
 
 <br>
 
+<!-- PROJECT ROOT -->
 <section id="section-3.2">
-    <p>
-        <strong>Project Root:</strong>
-        Go to your IDE or text editor select "Startup" class and delete all distracting boilerplate code and comments that you don't
-        need.
-    </p>
-    <img src="{% static 'img/Integrating Angular and ASP.NET Core8.jpg' %}" class="img-thumbnail tutorial-img">
-    <p>
-        This is much cleaner.
-    </p>
-    <p>
-        At the bottom in "Configure" method use extension method from app builder "app.UseStaticFiles()"
-    </p>
-    <img src="{% static 'img/Integrating Angular and ASP.NET Core9.jpg' %}" class="img-thumbnail tutorial-img">
-    <p>
-        This line of code will serving static files for the current request, by default is looking in "wwwroot" folder that is already
-        created for you from .NET Project template in beginning on this tutorial.
-    </p>
-    <p>
-        Lets test use of current root as go to "wwwroot" and create new html file like on screenshot below in my case "test.html"
-        with pure text for testing purpose
-    </p>
-    <img src="{% static 'img/Integrating Angular and ASP.NET Core10.jpg' %}" class="img-thumbnail tutorial-img">
-    <p>
-        then start terminal(in my case I use vscode integrated terminal, see above screenshot) go to project folder and type `
-        <i>dotnet run</i>`, like before dotnet will run local server and start listening for requests on port 5000. From there
-        our pipeline should serve "test.html" on browser when we navigate url to file name (in my case url is
-        <a href="localhost:5000/test.html">localhost:5000/test.html</a>).
-    </p>
-    <p>
-        We see that the content appear on screen also files are properly injected and last but not least our console has no red lines
-        (no errors).
-    </p>
-    <p>
-        Here is our html file when we open network tab.
-    </p>
-    <img src="{% static 'img/Integrating Angular and ASP.NET Core11.jpg' %}" class="img-thumbnail tutorial-img">
-    <p>
-        If you follow along with me and everything is fine so far go to "wwwroot" folder and delete "test.html" file.
-    </p>
-    <p>
-        Next we should setup typescript and angular-cli configurations to sync with new changes on projects structure that we made,
-        then serve webpack bundles in our public root because they had to be accesible from browser.
-    </p>
+    <strong>&emsp;- Project Root:</strong>
+    <hr> {% include 'main/section-3.2.html' %}
 </section>
 
 <br>
 
+<!-- CONFIGURING TYPESCRIPT COMPILATION -->
 <section id="section-3.3">
-    <p>
-        <strong>Configuring Typescript Compilation:</strong>
-        Go to “tsconfig.json“ file and change “compilerOptions“ “outDir“ property, this option determines where should be generated
-        compiled Javascript files, in our case “wwwroot/dist/out-tsc”. Also above “compilerOptions” create ”include” section
-        that serve for checking from which folders must consider files because without “include” typescript will traverse
-        all unnecessary folders and compile whole bunch of stuff. We shouldn't compile all existing typescript because most
-        of them is just npm packages that doesn't change unlike our source code and this is just a waste of time and resources(mostly
-        time).
-    </p>
-    <p>
-        I have selected all the changes in the file so you can not go wrong.
-    </p>
-    <img src="{% static 'img/Integrating Angular and ASP.NET Core12.jpg' %}" class="img-thumbnail tutorial-img">
-    <p>
-        We are done with typescript itself and It's time to configure Angular-CLI.
-    </p>
+    <strong>&emsp;- Configuring Typescript Compilation:</strong>
+    <hr> {% include 'main/section-3.3.html' %}
 </section>
 
 <br>
 
+<!-- CONFIGURING ANGULAR CLI -->
 <section id="section-3.4">
-    <p>
-        <strong>Configuring Angular CLI:</strong>
-        Open “.angular-cli.json” and change ”root” directory from ”src” to ”&lt;Name Of Client App&gt;” in my case ”ClientApp” also
-        change the output directory ”outDir” to ”.wwwroot/&lt;Name Of Client App&gt;/dist” and delete unnecessary ”index”
-        member with value ”index.html” that dosn’t need to be generated because we will serve Angular straight to our Razor
-        pages
-    </p>
-
-    <p>
-        <strong style="color:red">This changes!</strong>
-    </p>
-    <img src="{% static 'img/Integrating Angular and ASP.NET Core13.jpg' %}" class="img-thumbnail tutorial-img">
-    <p>
-        <strong style="color:red">Delete line "index"!</strong>
-    </p>
-    <p>
-        and we are almost done, there are a few more steps left before application is ready to build upon.
-    </p>
-    <p>
-        Next we will install all Angular dependencies, build all the files that application needs and check everything is placed
-        on right spot, from this point we should test application work to finish appropriately this tutorial.
-    </p>
+    <strong>&emsp;- Configuring Angular CLI:</strong>
+    <hr> {% include 'main/section-3.4.html' %}
 </section>
 
 <br>
 
+<!-- BUILDING ALL TOGETHER -->
 <section id="section-3.5">
-    <p>
-        <strong>Building All Together:</strong>
-        Open terminal in .NET Project folder(not client app) and type `
-        <i>npm install</i>` this command should install all Angular dependencies.
-    </p>
-    <p>
-        Here in "node_modules" folder all angular dependencies and npm packages live
-    </p>
-
-    <img src="{% static 'img/Integrating Angular and ASP.NET Core14.jpg' %}" class="img-thumbnail tutorial-img">
-
-    <p>
-        Switch on last console and type `
-        <i>ng build</i>` little bit later in “wwwroot” folder appear new one with name “ClientApp” just as we configuring CLI
-        before, there is all compiled Typescript in form of JavaScript files that we need for our purpose along with source
-        maps which is used for debugging but in this tutorial is not relevant.
-    </p>
-    <p>
-        Our "wwwroot" folder after `
-        <i>ng build</i>` command with all Javascript
-    </p>
-
-    <img src="{% static 'img/Integrating Angular and ASP.NET Core15.jpg' %}" class="img-thumbnail tutorial-img">
-
-    <p>
-        All chunks as we see are the same as in root folder.
-    </p>
-    <p>
-        Right now we have all the parts in place, remains to test whether everything works smoothly but before that we must do a
-        little more work such as creating a controller to manage the coming requests and return apropriate Razor page.
-    </p>
+    <strong>&emsp;- Building All Together:</strong>
+    <hr> {% include 'main/section-3.5.html' %}
 </section>

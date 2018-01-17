@@ -1,0 +1,25 @@
+<!--  -->
+<!-- CONFIGURING ANGULAR CLI -->
+<!--  -->
+
+
+<p>
+    Open “.angular-cli.json” and change ”root” directory from ”src” to ”&lt;Name Of Client App&gt;” in my case ”ClientApp” also
+    change the output directory ”outDir” to ”.wwwroot/&lt;Name Of Client App&gt;/dist” and delete unnecessary ”index” member
+    with value ”index.html” that dosn’t need to be generated because we will serve Angular straight to our Razor pages
+</p>
+
+<p>
+    <strong style="color:red">This changes!</strong>
+</p>
+<img src="{% static 'img/Integrating Angular and ASP.NET Core13.jpg' %}" class="img-thumbnail tutorial-img">
+<p>
+    <strong style="color:red">Delete line "index"!</strong>
+</p>
+<p>
+    and we are almost done, there are a few more steps left before application is ready to build upon.
+</p>
+<p>
+    Next we will install all Angular dependencies, build all the files that application needs and check everything is placed
+    on right spot, from this point we should test application work to finish appropriately this tutorial.
+</p>
