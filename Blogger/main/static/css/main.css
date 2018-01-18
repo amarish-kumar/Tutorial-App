@@ -33,7 +33,12 @@ div[id^='section'] {
     transform:translateY(-150vh);
 }
 i {
-    color:red;
+    color:darkviolet;
+}
+u a {
+    color:darkgoldenrod;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 1.1em;
 }
 section {
     padding: 0 5%;
@@ -55,5 +60,5 @@ img.tutorial-img {
 
 code pre {
     background: #ffffff !important;
-    padding-top: 2%;
+    padding: 2%;
 }
