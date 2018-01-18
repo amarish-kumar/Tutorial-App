@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>.Net Angular Integration</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> {% load staticfiles %}
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
+	 crossorigin="anonymous">
+	<link rel="stylesheet" href="{% static 'fontawesome/web-fonts-with-css/css/fontawesome-all.min.css' %}" type="text/css" />
+
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" href="{% static 'bootstrap-navbar/navbar-fixed-left.min.css' %}">
+	<link rel="stylesheet" href="{% static 'bootstrap-navbar/navbar-fixed-right.min.css' %}">
+</head>
+
+<body class="body" data-spy="scroll" data-target="#main-navbar" data-offset="400">
+	<div class="container-fluid" style="min-height:95%;">
+		<div class="sticky-top">
+			<!-- Header section -->
+			<header>
+				<div class="row">
+					<div class="col-sm-2">
+						<center>
+							<img id="#logo-net" class="img-fluid" src="{% static 'img/core-logo.png' %}" class="responsive-img" style='max-height:100px;'
+							 alt=".net logo">
+						</center>
+					</div>
+					<div class="col-sm-8">
+						<br>
+						<center>
+							<h1>Integrating ASP.NET Core 2+ with Angular 2+</h1>
+						</center>
+					</div>
+					<div class="col-sm-2">
+						<center>
+							<img id="#logo-angular" class="img-fluid" src="{% static 'img/angular-logo.png' %}" class="responsive-img" style='max-height:100px;'
+							 alt="angular logo">
+						</center>
+					</div>
+				</div>
+				<br>
+				<div>
+					<hr>
+					{% include 'main/navigation.html' %}
+					<hr>
+				</div>
+			</header>
+		</div>
+
+		<!-- content -->
+		<div class="col-sm-12">
+			<div id="main-wrapper" class='container-fluid'>
+				{% block content %} {% endblock %}
+			</div>
+		</div>
+	</div>
+
+	<!-- bottom section -->
+	<footer>
+		<div class="container-fluid" style='margin-left:15px'>
+			<p>
+				<a href="#" target="blank">Contact</a> |
+				<a href="#" target="blank">LinkedIn</a> |
+				<a href="#" target="blank">Twitter</a> |
+				<a href="#" target="blank">Google+</a>
+			</p>
+		</div>
+	</footer>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	 crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	 crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+	 crossorigin="anonymous"></script>
+
+	<script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

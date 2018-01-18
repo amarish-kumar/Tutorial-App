@@ -1,0 +1,61 @@
+
+<!--  -->
+<!-- INTEGRATING ANGULAR AND ASP.NET CORE LIVE AND WORK TOGETHER -->
+<!--  -->
+
+
+<!-- PROJECT ROOT -->
+<p>
+    Switch to your IDE or text editor select "<strong>Startup</strong>" class and delete all distracting boilerplate code and comments that you don't
+    need like screenshot below.
+</p>
+<img src="{% static 'img/Integrating Angular and ASP.NET Core8.jpg' %}" class="img-thumbnail tutorial-img">
+<p>
+    This is much cleaner.
+</p>
+
+<p>
+    You must configure .NET Core
+    <!-- TOOLTIP -->
+    <u  data-toggle="tooltip" 
+        data-placement="top" 
+        title="Middleware is software that is assembled into an application pipeline to handle requests and responses.
+Source: docs.microsoft.com"> 
+        <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware?tabs=aspnetcore2x">middleware</a>
+    </u>
+    to add static files into pipeline, to do that we use
+    "<strong>Microsoft.AspNetCore.StaticFiles</strong>" library and then call extension method
+    "<strong>UseStaticFiles</strong>".
+</p>
+<img src="{% static 'img/Integrating Angular and ASP.NET Core9.jpg' %}" class="img-thumbnail tutorial-img">
+<p>
+    By default .NET Core looking in "<strong>wwwroot</strong>" folder that is already created for you from project template in beginning of the tutorial.
+</p>
+
+<p>
+    Lets test use of current root as go to "<strong>wwwroot</strong>" and create new html file like on screenshot below in my case
+    "<strong>test.html</strong>" with pure text for testing purpose.
+</p>
+<img src="{% static 'img/Integrating Angular and ASP.NET Core10.jpg' %}" class="img-thumbnail tutorial-img">
+<p>
+    Then start terminal(in my case I use vscode integrated terminal, see above screenshot) go to project folder and type
+    `<i>dotnet run</i>`, like before dotnet will run local server and start listening for requests on port 5000 and from there our pipeline should have acces to "<strong>test.html</strong>" file. 
+</p>
+<p>
+    On browser when we navigate url to file name (in my case url is <a href="localhost:5000/test.html">localhost:5000/test.html</a>)
+    we see that the content appear on screen also files are properly injected and last but not least our console has no red lines
+    (no errors).
+</p>
+
+<p>
+    Here is our html file when we open network tab.
+</p>
+<img src="{% static 'img/Integrating Angular and ASP.NET Core11.jpg' %}" class="img-thumbnail tutorial-img">
+<p>
+    If you follow along with me and everything is fine so far go to "<strong>wwwroot</strong>" folder and delete "<strong>test.html</strong>" file.
+</p>
+
+<p>
+    Next we should setup typescript and angular-cli configurations to sync with new changes on projects structure that we made,
+    then serve webpack bundles in our public root because they had to be accesible from client browser.
+</p>

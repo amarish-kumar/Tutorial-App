@@ -1,0 +1,14 @@
+
+
+<!-- CONFIGURING TYPESCRIPT COMPILATION -->
+<p>
+    Go to “<strong>tsconfig.json</strong>“ file and change in “<strong>compilerOptions</strong>“ “<strong>outDir</strong>“ property, this option determines where should be generated compiled Javascript files, in our case is “<strong>wwwroot/dist/out-tsc</strong>”. Also above “<strong>compilerOptions</strong>” create
+    ”<strong>include</strong>” section that serve for checking from which folders must consider files because without “<strong>include</strong>” typescript will traverse all unnecessary folders and compile whole bunch of stuff that we shouldn't compile at all, because most of them is just npm packages that doesn't change unlike our source code and this is just a waste of time and resources mostly time.
+</p>
+<p>
+    I have selected all the changes in the file so you can not go wrong.
+</p>
+<img src="{% static 'img/Integrating Angular and ASP.NET Core12.jpg' %}" class="img-thumbnail tutorial-img">
+<p>
+    We are done with typescript itself and It's time to configure Angular-CLI.
+</p>
