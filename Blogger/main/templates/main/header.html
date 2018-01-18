@@ -62,7 +62,7 @@
 			<p>
 				<a href="#" target="blank">Contact</a> |
 				<a href="#" target="blank">LinkedIn</a> |
-				<a href="#" target="blank">Twitter</a> |
+				<a href="#" target="blank">Github</a> |
 				<a href="#" target="blank">Google+</a>
 			</p>
 		</div>
@@ -78,4 +78,9 @@
 	<script src="{% static 'js/main.js' %}"></script>
 </body>
 
+<script>
+	$(window).on('hashchange', function(ev){
+		$(window).scrollTop($(window).scrollTop() - 340)
+	});
+</script>
 </html>

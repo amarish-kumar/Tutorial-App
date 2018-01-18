@@ -62,3 +62,6 @@ code pre {
     background: #ffffff !important;
     padding: 2%;
 }
+.active {
+    color:darkblue !important
+}

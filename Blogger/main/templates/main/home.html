@@ -1,6 +1,6 @@
 {% extends "main/header.html" %} {% load static %} {% block content %}
 
-<div id="tutorial-body" class="section-0">
+<div id="section-0" class="tutorial-body">
     {% include 'main/section-0.html' %}
 
     <!-- PREREQUISITES -->
@@ -13,7 +13,7 @@
     <!-- INSTALLING PROJECTS  -->
     <div id="section-2">
         <h2>Installing Projects</h2>
-        <hr>
+        <hr><br>
         {% include 'main/section-2.html' %}
     </div>
     
@@ -29,6 +29,13 @@
         <h2>MVC Integration</h2>
         <hr>
         {% include 'main/section-4.html' %}
+    </div>
+
+    <!-- RESORUCES -->
+    <div id="section-5" class=".anchor">
+        <h2>Resources</h2>
+        <hr>
+        {% include 'main/section-5.html' %}
     </div>
 </div>
 {% endblock %}
