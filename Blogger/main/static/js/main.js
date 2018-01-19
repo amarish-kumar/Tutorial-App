@@ -24,8 +24,14 @@ window.main = {};
 }());
 
 (function (main) {
+    let oldDirection = 'navbar-fixed-left'
     main.fixNav = function (direction) {
-        $("#main-navbar").attr('class', 'navbar navbar-expand-lg navbar-light bg-light navbar-fixed-' + direction);
+        let newDirection = 'navbar-fixed-' + direction
+
+        $("#main-navbar").removeClass(oldDirection);
+        $("#main-navbar").addClass(newDirection);
+
+        oldDirection = newDirection;
 
         if (direction == "top") {
             $('#custom-nav').removeClass('nav nav-link')

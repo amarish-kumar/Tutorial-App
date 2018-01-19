@@ -11,9 +11,9 @@ body {
 }
 
 header {
-    /* margin: 2%; */
+    /* margin: 2%;
+    padding-top:1%; */
     background-color: #f6f6f6;
-    padding-top:1%;
 }
 header img, header h1 {
     transition:1s;
@@ -63,5 +63,6 @@ code pre {
     padding: 2%;
 }
 .active {
-    color:darkblue !important
+    font-weight: 600;
+    color:darkslategray !important;
 }
